@@ -1,0 +1,50 @@
+﻿@page
+@model CdSkivorUppgift.Pages.Songs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Songs Index</h1>
+
+<a class="d-flex justify-content-start align-content-center" asp-page="Create"><i class="fa-regular fa-square-plus" style="height:3rem;"></i><h4>Create New</h4></a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Song[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Song[0].Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Song[0].Author)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Song) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record)
+                </td>
+            <td>
+                    <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id"> Edit</a> 
+                    <a class="btn btn-secondary"  asp-page="./Details" asp-route-id="@item.Id">Details</a> 
+                    <a class="btn btn-danger"  asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

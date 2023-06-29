@@ -1,0 +1,93 @@
+﻿@page
+@model CdSkivorUppgift.Pages.Records.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Records Index</h1>
+
+
+<a class="d-flex justify-content-start align-content-center" asp-page="Create"><i class="fa-regular fa-square-plus" style="height:3rem;"></i><h4>Create New</h4></a>
+
+
+<div class="card-deck">
+    <div class="row row-cols-1 row-cols-md-3">
+    @{
+       
+        foreach (var record in Model.Record)
+        {
+            
+
+            <div class="col mb-4">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3>@record.AlbumName</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@record.ArtistName</li>
+                    
+                    <div class="card-body">
+                        <a class="btn btn-primary"  asp-page="./Details" asp-route-id="@record.Id">Details</a>
+                         <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@record.Id">Delete</a>
+                    </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <div>@record.ReleaseDate.ToShortDateString() </div>
+                                <i class="fa-solid fa-music"></i>
+                                <div>@record.RecordCompany</div>
+                                
+                        
+                    </div>
+                
+                </ul>
+            </div>
+            </div>
+           
+       
+    }
+    
+}
+</div>
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Record[0].ArtistName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Record[0].AlbumName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Record[0].ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Record[0].RecordCompany)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Record) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordCompany)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
